@@ -1,4 +1,7 @@
-<?php include("header.php"); ?>
+<?php
+$title_header = "Melhor Rota";
+include("header.php");
+?>
 
 <h1>Melhor Rota</h1>
 
