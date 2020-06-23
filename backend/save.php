@@ -10,9 +10,8 @@ $cities = FALSE;
 if ($conn->query($sql)) {
     $atualizou = TRUE;
 
-    $query_cities = $conn->query("SELECT id, name FROM cities Order by id");
+    $query_cities = $conn->query("SELECT id, name FROM cities Order by name");
     $cities = $query_cities->fetch_all(MYSQLI_ASSOC);
-    $cities = json_encode($cities);
 }
 
 echo json_encode($cities);

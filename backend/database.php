@@ -14,7 +14,7 @@ if (!$conn) {
 function queryCities()
 {
     global $conn;
-    $query_cities = $conn->query("SELECT id, name FROM cities Order by id");
+    $query_cities = $conn->query("SELECT id, name FROM cities Order by name");
     $cities = $query_cities->fetch_all(MYSQLI_ASSOC);
     return $cities;
 }
