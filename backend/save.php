@@ -2,24 +2,19 @@
 
 require 'database.php';
 
-$name = $_POST['name'];
-$point = "POINT({$_POST['name']}, {$_POST['name']})";
+$sql = "INSERT INTO cities (name, coordinate) 
+VALUES ('{$_POST['name']}', POINT({$_POST['latitude']}, {$_POST['longitude']}))";
 
-$sql = "INSERT INTO cities (name, point) 
+$cities = FALSE;
 
+if ($conn->query($sql)) {
+    $atualizou = TRUE;
 
-  VALUES ({$name}, {$point})";
+    $query_cities = $conn->query("SELECT id, name FROM cities Order by id");
+    $cities = $query_cities->fetch_all(MYSQLI_ASSOC);
+    $cities = json_encode($cities);
+}
 
-$result = $mysqli->query($sql);
+echo json_encode($cities);
 
-
-$sql = "SELECT * FROM items Order by id desc LIMIT 1";
-
-
-$result = $mysqli->query($sql);
-
-
-$data = $result->fetch_assoc();
-
-
-echo json_encode($data);
+$conn->close();
