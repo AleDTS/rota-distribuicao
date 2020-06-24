@@ -26,8 +26,6 @@ function percursoMinimo()
     // 1
     $listaArcosPorNo = [];
 
-    $listaVazia = TRUE;
-
     // Para cada nó, criar lista com arcos
     // Omitindo arcos com destino como nó inicial e origem como final
     foreach ($nos as $no) {
@@ -36,16 +34,12 @@ function percursoMinimo()
             if ($arco[0] == $destino or $arco[1] == $origem or $arco[0] != $no)
                 continue;
 
-            if ($listaVazia) $listaVazia = FALSE;
-
             $listaArcosPorNo[$no][] = [
                 "arco" => $arco,
                 "custo" => $custos[$arco]
             ];
         }
     }
-
-    if ($listaVazia) return;
 
     //2
     $valoresNo = [];
@@ -81,8 +75,6 @@ function percursoMinimo()
                     array_splice($listaArcosPorNo[$no], $i, 1);
             }
         }
-
-        if ($listaArcosPorNo[$no] ?? NULL) return;
 
         // Para cada nó marcado
         //   Para cada arco não marcado
@@ -131,7 +123,7 @@ function percursoMinimo()
     }
 
     return [
-        'custo' => $m,
-        'percurso' => array_reverse($percurso)
+        'cost' => $m,
+        'route' => array_reverse($percurso)
     ];
 }

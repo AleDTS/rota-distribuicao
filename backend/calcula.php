@@ -10,7 +10,7 @@ $conn->close();
 
 // Abre arquivo com vertices
 $vertices = [];
-if ($file = fopen("backend/vertices.txt", "r")) {
+if ($file = fopen(__DIR__ . "/vertices.txt", "r")) {
     while (!feof($file)) {
         $line = trim(fgets($file));
         $vertices[] = explode(",", $line);
@@ -55,22 +55,22 @@ foreach ($vertices as $v) {
 }
 
 // Pega informações da requisição
-// $origem = $_GET['cidadeA'];
-// $destino = $_GET['cidadeB'];
+$origem = strtoupper($_GET['cityA']);
+$destino = strtoupper($_GET['cityB']);
 
-$origem = 'A';
-$destino = 'D';
+// $origem = 'A';
+// $destino = 'E';
 
 // Calcula percurso mínimo
-
 $resposta = percursoMinimo();
+
 if (!$resposta) {
     $resposta = [
-        "resposta" => FALSE
+        "response" => FALSE
     ];
 } else {
     $resposta = [
-        "resposta" => $resposta
+        "response" => $resposta
     ];
 }
 

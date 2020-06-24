@@ -1,15 +1,15 @@
-DROP TABLE cities;
+DROP TABLE IF EXISTS cities;
 
 CREATE TABLE IF NOT EXISTS cities (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL UNIQUE,
   `coordinate` point NOT NULL,
   PRIMARY KEY (`id`)
 );
 
 INSERT INTO`cities` (name, coordinate)
 VALUES 
-  -- ('a', POINT(-23.543797,-46.634158)),
+  ('a', POINT(-23.543797,-46.634158)),
   ('b', POINT(-22.910086,-47.059311)),
   ('c', POINT(-23.500147,-47.458557)),
   ('d', POINT(-23.188704,-46.884137)),
