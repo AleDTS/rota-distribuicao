@@ -34,13 +34,13 @@
 
     <div>
         <h1>Melhor Rota</h1>
-        <h3>Selecione as cidades de partida (A) e destino (B)</h3>
 
         <form id="form-route" action="javascript:void(0);" method="get">
+            <h3>Selecione as cidades de partida (A) e destino (B)</h3>
             <label for="cityA">Cidade A</label>
-            <select class="select-city" name="cityA" required="true">Cidade A</select>
+            <select class="select-city" name="cityA" required="true"></select>
             <label for="cityB">Cidade B</label>
-            <select class="select-city" name="cityB" required="true">Cidade B</select>
+            <select class="select-city" name="cityB" required="true"></select>
             <button type="submit" id="btn-calculate-route">Calcular Rota</button>
         </form>
         <p><span id="route-response"></span></p>
