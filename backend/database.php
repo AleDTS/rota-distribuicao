@@ -18,3 +18,11 @@ function queryCities()
     $cities = $query_cities->fetch_all(MYSQLI_ASSOC);
     return $cities;
 }
+
+function queryCitiesP()
+{
+    global $conn;
+    $query_cities = $conn->query("SELECT ST_X(coordinate) as lat, ST_Y(coordinate) as lng, name FROM cities");
+    $cities = $query_cities->fetch_all(MYSQLI_ASSOC);
+    return $cities;
+}
