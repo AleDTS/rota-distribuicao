@@ -8,7 +8,7 @@ cp .env-example .env
 source .env
 ```
 
-Criar banco no `mysql` e rodar o arquivo `backend/create-table.php`
+Criar banco no `mysql` e rodar o arquivo `backend/create-table.sql`
 
 Rodar servidor php
 
