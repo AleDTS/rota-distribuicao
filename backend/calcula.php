@@ -1,7 +1,7 @@
 <?php
 
 require 'database.php';
-require 'percurso_minimo.php';
+require 'funcoes_calculos.php';
 
 // Tabela de cidades
 $cities = queryCitiesP();
@@ -18,12 +18,6 @@ if ($file = fopen(__DIR__ . "/vertices.txt", "r")) {
     fclose($file);
 } else {
     die($file);
-}
-
-// Função para calcular distância euclidiana
-function calculaDistancia($x1, $y1, $x2, $y2)
-{
-    return sqrt(pow(($x2 - $x1), 2) + pow(($y2 - $y1), 2));
 }
 
 // Arrays com os nós (cidades) e dicionário por cidade

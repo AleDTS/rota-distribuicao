@@ -44,9 +44,9 @@ $(document).ready(function () {
                 var response = data.response;
                 if (Boolean(response)) {
                     $("#route-response").text(
-                        "Custo ≈ " +
-                            response.cost.toFixed(3) +
-                            ". Percurso: " +
+                        "Distância ≈ " +
+                            response.cost.toFixed(2) +
+                            " KM. Percurso: " +
                             response.route.toString()
                     );
                 } else {

@@ -17,6 +17,27 @@
 //     'TR' => 32, 'PT' => 4, 'PW' => 11, 'WP' => 11, 'WT' => 11, 'WO' => 32
 // ];
 
+// Fórmula de haversine -> em KM
+//https://www.geeksforgeeks.org/program-distance-two-points-earth/
+function calculaDistancia($lat1, $lng1, $lat2, $lng2)
+{
+    $latFrom = deg2rad($lat1);
+    $lngFrom = deg2rad($lng1);
+    $latTo = deg2rad($lat2);
+    $lngTo = deg2rad($lng2);
+
+    $latDelta = $latTo - $latFrom;
+    $lngDelta = $lngTo - $lngFrom;
+
+    $val = pow(sin($latDelta / 2), 2) + cos($latFrom) * cos($latTo) * pow(sin($lngDelta / 2), 2);
+
+    $res = 2 * asin(sqrt($val));
+
+    $radius = 6371;
+
+    return ($res * $radius);
+}
+
 function percursoMinimo()
 {
     global $arcos, $nos, $origem, $destino, $custos;
