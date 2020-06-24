@@ -20,7 +20,7 @@
             <h3>Preencha as informações</h3>
             <div>
                 <label for="name">Nome:</label>
-                <input type="text" name="name">
+                <input type="text" name="name" maxlength="1">
 
                 <label for="latitude">Latitude:</label>
                 <input type="number" step="any" min="-90" max="90" name="latitude">
@@ -36,14 +36,14 @@
         <h1>Melhor Rota</h1>
         <h3>Selecione as cidades de partida (A) e destino (B)</h3>
 
-        <div>
-            <label for="city-A">Cidade A</label>
-            <select id="select-city-A" class="select-city" name="city-A" required="true">Cidade A</select>
-            <label for="city-B">Cidade B</label>
-            <select id="select-city-B" class="select-city" name="city-B" required="true">Cidade B</select>
-        </div>
-
-        <button type="button" id="btn-calculate-route">Calcular Rota</button>
+        <form id="form-route" action="javascript:void(0);" method="get">
+            <label for="cityA">Cidade A</label>
+            <select class="select-city" name="cityA" required="true">Cidade A</select>
+            <label for="cityB">Cidade B</label>
+            <select class="select-city" name="cityB" required="true">Cidade B</select>
+            <button type="submit" id="btn-calculate-route">Calcular Rota</button>
+        </form>
+        <p><span id="route-response"></span></p>
     </div>
 
 </body>

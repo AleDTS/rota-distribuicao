@@ -21,7 +21,6 @@ $(document).ready(function () {
             type: "post",
             url: "backend/save.php",
             success: function (data) {
-                console.log(data);
                 if (Boolean(data)) {
                     alert("Cidade adicionada com sucesso!");
                     updateSelects(data);
@@ -32,6 +31,31 @@ $(document).ready(function () {
 
     $("#btn-calculate-route").click(function (e) {
         e.preventDefault();
+
+        var data = $("#form-route").serialize();
+
+        $.ajax({
+            dataType: "json",
+            data: data,
+            type: "get",
+            url: "backend/calcula.php",
+            success: function (data) {
+                console.log(data);
+                var response = data.response;
+                if (Boolean(response)) {
+                    $("#route-response").text(
+                        "Custo ≈ " +
+                            response.cost.toFixed(3) +
+                            ". Percurso: " +
+                            response.route.toString()
+                    );
+                } else {
+                    $("#route-response").text(
+                        "Não foi possíevel calcular a rota."
+                    );
+                }
+            },
+        });
     });
 });
 
@@ -42,7 +66,7 @@ var updateSelects = function (cities) {
 
     $(".select-city").each(function (i, $select) {
         cities.forEach(function (city) {
-            var option = new Option(city.name, city.id);
+            var option = new Option(city.name, city.name);
             $select.append(option);
         });
     });
